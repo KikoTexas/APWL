@@ -2060,28 +2060,8 @@ function renderLitCard(cn) {
   });
 }
 
-// ── WIX IFRAME HEIGHT REPORTING ──────────────────────────────────────────────
-function reportHeight() {
-  var h = document.documentElement.scrollHeight;
-  window.parent.postMessage({ type: "wix-iframe-height", height: h }, "*");
-}
-
-// Report on initial load
-window.addEventListener("load", function() {
-  reportHeight();
-  // Re-report after a short delay to catch any late-rendering content
-  setTimeout(reportHeight, 300);
-});
-
-// Re-report after any click that might change content height
-document.addEventListener("click", function() {
-  setTimeout(reportHeight, 150);
-});
-
-// Re-report if window is resized
-window.addEventListener("resize", function() {
-  setTimeout(reportHeight, 150);
-});
+// ── WIX IFRAME HEIGHT REPORTING (disabled — using fixed-height iframe with internal scroll) ──
+// function reportHeight() { ... }
 
 </script>
 </body>
